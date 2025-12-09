@@ -2,15 +2,14 @@
 
 namespace resist\Slugger\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use resist\Slugger\Slugger;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
 final class SluggerTest extends TestCase
 {
-    /**
-     * @dataProvider getSlugTestCases
-     */
+    #[DataProvider('getSlugTestCases')]
     public function testSlug(string|int|float $string, string $allowedChars, string $replacement, bool $lowercase, string $output): void
     {
         $cleaner = new Slugger(new AsciiSlugger());
@@ -19,7 +18,7 @@ final class SluggerTest extends TestCase
     }
 
     /**
-     * @return array[] string, allowed, replacement, toLowercase, expected
+     * @return array{string, string, string, bool, string} input, allowed, replacement, toLowercase, expected
      */
     public static function getSlugTestCases(): array
     {
