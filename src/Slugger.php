@@ -23,7 +23,7 @@ class Slugger implements SluggerInterface
     /**
      * @inheritDoc
      */
-    public function slug(string $string, string $separator = '-', string $locale = null): AbstractUnicodeString
+    public function slug(string $string, string $separator = '-', ?string $locale = null): AbstractUnicodeString
     {
         return $this->asciiSlugger->slug($string, $separator, $locale);
     }
